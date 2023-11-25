@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Manager Login</title>
+<link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="styles.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="utils.js"></script>
+
+<script>
+    function Login() {
+        username = document.getElementById("username").value;
+        password = document.getElementById("password").value;
+
+        $.ajax({
+            url: "mlogin.php",
+            type: "post",
+            data: {
+                username: username,
+                password: password,
+            },
+            success: function (data) {
+                localStorage.manager = data;
+                document.location.href = "listing.html";
+            },
+            error: function (xhr, status, code) {
+                showAlert(xhr);
+            },
+        });
+    }
+</script>
+
+<html>
+    <body>
+        <div
+            class="container"
+            style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: calc((100vh - 400px) / 2);
+                height: 400px;
+                width: 400px;
+                background-color: rgb(240, 240, 240);
+                border-radius: 30px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            ">
+            <div style="display: block">
+                <div class="row" style="text-align: center; position: relative">
+                    <button
+                        class="btn btn-default"
+                        style="
+                            position: absolute;
+                            left: 0;
+                            top: 10px;
+                            height: 40px;
+                            width: 40px;
+                            border-radius: 100%;
+                            line-height: 30px;
+                        "
+                        onclick="document.location.href='buyonline.html'">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                    </button>
+                    <h3>Manager Login</h3>
+                </div>
+                <form>
+                    <div class="row" style="margin-top: 32px">
+                        <input
+                            required
+                            class="form-control input-lg"
+                            style="font-size: medium"
+                            class="col sw-6"
+                            type="text"
+                            placeholder="Username"
+                            id="username" />
+                    </div>
+                    <div class="row" style="margin-top: 16px">
+                        <input
+                            required
+                            class="form-control input-lg"
+                            style="font-size: medium"
+                            type="password"
+                            placeholder="Password"
+                            id="password" />
+                    </div>
+                    <div
+                        class="row"
+                        style="margin-top: 32px; margin-bottom: 32px">
+                        <button
+                            class="btn btn-primary col-sm-12"
+                            style="
+                                height: 50px;
+                                width: calc(100% - 80px);
+                                margin-left: 40px;
+                                border-radius: 10px;
+                            "
+                            type="button"
+                            name="submit"
+                            onclick="Login();">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script>
+            Alert();
+        </script>
+    </body>
+</html>

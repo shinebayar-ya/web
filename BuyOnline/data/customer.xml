@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customers>
+    <user>
+        <id>1</id>
+        <email>se21d03@nmit.edu.mn</email>
+        <firstname>Munkh-Orgil</firstname>
+        <lastname>Boldbaatar</lastname>
+        <password>DDEFF472BA562F8B89EA9BBC89739C1D67119BF6</password>
+        <phone_no>99808453</phone_no>
+    </user>
+    <user>
+        <id>2</id>
+        <email>m_orgilmn@yahoo.com</email>
+        <lastname>Boldbaatar</lastname>
+        <firstname>Munh-Orgil</firstname>
+        <password>DDEFF472BA562F8B89EA9BBC89739C1D67119BF6</password>
+        <phone_no/>
+    </user>
+<user><id>3</id><email>123@yahoo.com</email><lastname>Boldbaatar</lastname><firstname>Munh-Orgil</firstname><password>61C09E3CA07DAA81C09D082F1C84DD30A95F6E18</password><phone_no>01 12345678</phone_no></user><user><id>4</id><email>1234@gmail.com</email><lastname>Boldbaatar</lastname><firstname>Munh-Orgil</firstname><password>61C09E3CA07DAA81C09D082F1C84DD30A95F6E18</password><phone_no>(01) 12345678</phone_no></user><user><id>5</id><email>12345@gmail.com</email><lastname>Boldbaatar</lastname><firstname>Munh-Orgil</firstname><password>DDEFF472BA562F8B89EA9BBC89739C1D67119BF6</password><phone_no/></user></customers>

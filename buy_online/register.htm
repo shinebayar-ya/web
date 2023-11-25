@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Register</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body class="bg-dark">
+    <div class="container mt-5 bg-light border rounded p-5">
+      <form>
+        <h1>Customer register</h1>
+        <div class="row mb-3">
+          <div class="form-group col-md-6">
+            <label for="input_fname">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="input_fname"
+              placeholder="First Name"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="form-group col-md-6">
+            <label for="input_sname">Surname</label>
+            <input
+              type="text"
+              class="form-control"
+              name="input_sname"
+              placeholder="Surname"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="form-group col-md-6">
+            <label for="input_email">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              name="input_email"
+              placeholder="Email"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="form-group col-md-6">
+            <label for="input_pass">Password</label>
+            <input
+              type="text"
+              class="form-control"
+              name="input_pass"
+              placeholder="Password"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="form-group col-md-6">
+            <label for="input_retyped_pass">Re-type Password</label>
+            <input
+              type="text"
+              class="form-control"
+              name="input_retyped_pass"
+              placeholder="Re-type Password"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="form-group col-md-6">
+            <label for="input_phone_num">Phone Number</label>
+            <input
+              type="text"
+              class="form-control"
+              name="input_phone_num"
+              placeholder="Phone Number"
+            />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" onclick="validate()">
+          Register
+        </button>
+      </form>
+      <button
+        type="submit"
+        class="btn btn-secondary"
+        onclick="document.location.href='login.htm'"
+      >
+        Back
+      </button>
+    </div>
+    <script>
+      function validate() {}
+    </script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

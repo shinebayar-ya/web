@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Register</title>
+<link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="styles.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="utils.js"></script>
+
+<!-- md5 hash -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+
+<script>
+    function Register() {
+        var email = document.getElementById("email").value;
+        var firstname = document.getElementById("firstname").value;
+        var lastname = document.getElementById("lastname").value;
+        var pass = document.getElementById("password").value;
+        var re_pass = document.getElementById("re_password").value;
+        if (
+            email == "" ||
+            firstname == "" ||
+            lastname == "" ||
+            pass == "" ||
+            re_pass == ""
+        ) {
+            return false;
+        }
+        if (pass != re_pass) {
+            $("#pass_group").addClass("has-error");
+            document.getElementById("pass_help").innerText =
+                "Passwords do not match";
+            return false;
+        } else {
+            $("#pass_group").removeClass("has-error");
+            document.getElementById("pass_help").innerText = "";
+        }
+        var md5Password = CryptoJS.MD5(
+            document.getElementById("password").value
+        ).toString();
+        var phone_no = document.getElementById("phone_no").value;
+        if (phone_no !== "") {
+            var pattern = /\(?0\d\)?\s?\d{8}/;
+            if (phone_no.match(pattern) == null) {
+                $("#phone_group").addClass("has-error");
+                document.getElementById("phone_help").innerText =
+                    "Invalid phone number format";
+                return false;
+            }
+        }
+        $.ajax({
+            type: "POST",
+            url: "register.php",
+            data: {
+                email: email,
+                firstname: firstname,
+                lastname: lastname,
+                password: md5Password,
+                phone_no: phone_no,
+            },
+            success: function (data) {
+                document.location.href = "login.html";
+            },
+            error: function (xhr, status, error) {
+                showAlert(xhr);
+            },
+        });
+    }
+</script>
+
+<html>
+    <body>
+        <div
+            class="container"
+            style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: calc((100vh - 600px) / 2);
+                height: 600px;
+                width: 400px;
+                overflow: auto;
+                background-color: rgb(240, 240, 240);
+                border-radius: 30px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            ">
+            <div style="display: block">
+                <form method="post">
+                    <div class="row" style="margin-top: 20px">
+                        <input
+                            required
+                            class="form-control input-lg"
+                            style="font-size: medium"
+                            class="col sw-6"
+                            type="email"
+                            placeholder="Email"
+                            id="email" />
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <input
+                            required
+                            class="form-control input-lg"
+                            style="font-size: medium"
+                            type="text"
+                            placeholder="Last name"
+                            id="lastname" />
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <input
+                            required
+                            class="form-control input-lg"
+                            style="font-size: medium"
+                            type="text"
+                            placeholder="First name"
+                            id="firstname" />
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <input
+                            required
+                            class="form-control input-lg"
+                            style="font-size: medium"
+                            type="password"
+                            placeholder="Password"
+                            id="password" />
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div id="pass_group" class="form-group">
+                            <input
+                                required
+                                class="form-control input-lg"
+                                style="font-size: medium"
+                                type="password"
+                                placeholder="Re-enter password"
+                                id="re_password" />
+                            <span class="help-block" id="pass_help"></span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 8px">
+                        <div id="phone_group" class="form-group">
+                            <input
+                                class="form-control input-lg"
+                                style="font-size: medium"
+                                type="tel"
+                                placeholder="Phone number"
+                                id="phone_no" />
+                            <span class="help-block" id="phone_help"></span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px">
+                        <button
+                            class="btn btn-primary col-sm-12"
+                            style="
+                                height: 50px;
+                                width: calc(100% - 80px);
+                                margin-left: 40px;
+                            "
+                            type="submit"
+                            onclick="Register()">
+                            Register
+                        </button>
+                    </div>
+                </form>
+                <div class="row" style="margin-top: 10px">
+                    <button
+                        class="btn btn-default col-sm-12"
+                        style="
+                            height: 50px;
+                            width: calc(100% - 80px);
+                            margin-left: 40px;
+                        "
+                        onclick="document.location.href='login.html'">
+                        Back to login
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            Alert();
+        </script>
+    </body>
+</html>
